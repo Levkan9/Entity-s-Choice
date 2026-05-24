@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Entity's Choice</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="app">
+
+    <div class="sidebar">
+
+      <h1>ENTITY'S CHOICE</h1>
+
+      <div class="sub">
+        DEAD BY DAYLIGHT RANDOMIZER
+      </div>
+
+      <div class="mode-switch">
+
+        <button class="mode-btn active" data-mode="survivor" type="button">
+          SURVIVOR
+        </button>
+
+        <button class="mode-btn" data-mode="killer" type="button">
+          KILLER
+        </button>
+
+      </div>
+
+      <button id="generateBtn">
+        GENERATE BUILD
+      </button>
+
+      <div class="hint">
+        THE ENTITY IS WATCHING
+      </div>
+
+    </div>
+
+    <div class="content">
+      <div id="result">
+        <div class="placeholder">
+          AWAITING THE ENTITY'S CHOICE...
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script type="module" src="app.js"></script>
+
+</body>
+
+</html>
