@@ -22,12 +22,10 @@ import {
 
 const button = document.getElementById("generateBtn");
 const result = document.getElementById("result");
-
 const modeButtons = document.querySelectorAll(".mode-btn");
 
 let currentMode = "survivor";
 
-// переключение режима
 modeButtons.forEach(btn => {
   btn.addEventListener("click", () => {
     modeButtons.forEach(b => b.classList.remove("active"));
@@ -36,7 +34,6 @@ modeButtons.forEach(btn => {
   });
 });
 
-// random
 function random(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
@@ -55,48 +52,92 @@ function getRandomUnique(arr, count) {
   return result;
 }
 
+function renderImage(src, alt) {
+  if (!src) {
+    return `<div class="empty-image">NO IMAGE</div>`;
+  }
+
+  return `<img src="${src}" alt="${alt}">`;
+}
+
+function renderCard(item, className = "") {
+  return `
+    <div class="build-card ${className} ${item.rarity || ""}">
+      <div class="card-name">${item.name}</div>
+      <div class="card-image">
+        ${renderImage(item.image, item.name)}
+      </div>
+    </div>
+  `;
+}
+
 // SURVIVOR
 function generateSurvivorBuild() {
   const survivor = random(survivors);
   const perks = getRandomUnique(survivorPerks, 4);
+
   const item = random(items);
   const [addon1, addon2] = getRandomUnique(item.addons, 2);
+
   const offering = random(survivorOfferings);
   const challenge = random(survivorChallenges);
 
   result.innerHTML = `
     <h2>SURVIVOR BUILD</h2>
 
-    <div class="character-card">
-      <img src="${survivor.image}" alt="${survivor.name}">
-      <h3>${survivor.name}</h3>
-    </div>
+    <div class="survivor-layout">
 
-    <div class="block">
-      <b>PERKS</b><br>
-      ${perks.join("<br>")}
-    </div>
+      <section class="build-row top-row">
 
-    <div class="block">
-      <b>ITEM</b><br>
-      ${item.name}
-    </div>
+        <div class="character-box">
+          <div class="character-name">${survivor.name}</div>
 
-    <div class="block">
-      <b>ADDONS</b><br>
-      ${addon1.name}<br>
-      ${addon2.name}
-    </div>
+          <div class="character-image">
+            <img src="${survivor.image}" alt="${survivor.name}">
+          </div>
+        </div>
 
-    <div class="block">
-      <b>OFFERING</b><br>
-      ${offering}
-    </div>
+        <div class="item-box">
+          <div class="section-title">ITEM</div>
+          ${renderCard(item, "item-card")}
+        </div>
 
-    <div class="block">
-      <b>CHALLENGE</b><br>
-      ${challenge.title}<br>
-      <small>${challenge.description}</small>
+        <div class="item-addons-box">
+          <div class="section-title">ITEM ADDONS</div>
+
+          <div class="cards-row">
+            ${renderCard(addon1, "addon-card")}
+            ${renderCard(addon2, "addon-card")}
+          </div>
+        </div>
+
+      </section>
+
+      <section class="build-row">
+        <div class="section-title">PERKS</div>
+
+        <div class="cards-row perks-row">
+          ${perks.map(p => renderCard(p, "perk-card")).join("")}
+        </div>
+      </section>
+
+      <section class="build-row">
+        <div class="section-title">OFFERING</div>
+
+        <div class="cards-row">
+          ${renderCard(offering, "offering-card")}
+        </div>
+      </section>
+
+      <section class="build-row">
+        <div class="section-title">CHALLENGE</div>
+
+        <div class="challenge-box">
+          <div class="challenge-title">${challenge.title}</div>
+          <div class="challenge-description">${challenge.description}</div>
+        </div>
+      </section>
+
     </div>
   `;
 }
@@ -110,45 +151,71 @@ function generateKillerBuild() {
 
   const addonsPool = killerAddons?.[killer.name] || [];
 
-  let addonsText = "NO ADDONS";
+  let addonsText = `<div class="text-line">NO ADDONS</div>`;
 
   if (addonsPool.length >= 2) {
     const [a1, a2] = getRandomUnique(addonsPool, 2);
-    addonsText = `${a1.name}<br>${a2.name}`;
+
+    addonsText = `
+      ${renderCard(a1, "addon-card")}
+      ${renderCard(a2, "addon-card")}
+    `;
   }
 
   result.innerHTML = `
     <h2>KILLER BUILD</h2>
 
-    <div class="character-card">
-      <img src="${killer.image}" alt="${killer.name}">
-      <h3>${killer.name}</h3>
-    </div>
+    <div class="survivor-layout">
 
-    <div class="block">
-      <b>PERKS</b><br>
-      ${perks.join("<br>")}
-    </div>
+      <section class="build-row top-row">
 
-    <div class="block">
-      <b>ADDONS</b><br>
-      ${addonsText}
-    </div>
+        <div class="character-box">
+          <div class="character-name">${killer.name}</div>
 
-    <div class="block">
-      <b>OFFERING</b><br>
-      ${offering}
-    </div>
+          <div class="character-image">
+            <img src="${killer.image}" alt="${killer.name}">
+          </div>
+        </div>
 
-    <div class="block">
-      <b>CHALLENGE</b><br>
-      ${challenge.title}<br>
-      <small>${challenge.description}</small>
+        <div class="item-addons-box">
+          <div class="section-title">ADDONS</div>
+
+          <div class="cards-row">
+            ${addonsText}
+          </div>
+        </div>
+
+      </section>
+
+      <section class="build-row">
+        <div class="section-title">PERKS</div>
+
+        <div class="cards-row perks-row">
+          ${perks.map(p => renderCard(p, "perk-card")).join("")}
+        </div>
+      </section>
+
+      <section class="build-row">
+        <div class="section-title">OFFERING</div>
+
+        <div class="cards-row">
+          ${renderCard(offering, "offering-card")}
+        </div>
+      </section>
+
+      <section class="build-row">
+        <div class="section-title">CHALLENGE</div>
+
+        <div class="challenge-box">
+          <div class="challenge-title">${challenge.title}</div>
+          <div class="challenge-description">${challenge.description}</div>
+        </div>
+      </section>
+
     </div>
   `;
 }
 
-// button
 button.addEventListener("click", () => {
   if (currentMode === "survivor") generateSurvivorBuild();
   else generateKillerBuild();
