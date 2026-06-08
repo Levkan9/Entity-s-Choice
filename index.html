@@ -45,6 +45,14 @@
         THE ENTITY IS WATCHING
       </div>
 
+      <div class="version-box">
+        <div class="version-text">v2.1</div>
+
+        <button id="patchNotesBtn" class="patch-btn" type="button">
+          PATCH NOTES
+        </button>
+      </div>
+
     </div>
 
     <div class="content">
@@ -57,7 +65,22 @@
 
   </div>
 
+<div id="patchNotesModal" class="patch-modal hidden">
+  <div class="patch-content">
+
+    <h2>История обновлений</h2>
+
+    <div id="patchList"></div>
+
+    <button id="closePatchNotes" class="close-btn" type="button">
+      ЗАКРЫТЬ
+    </button>
+
+  </div>
+</div>
+
   <script type="module" src="app.js"></script>
 
 </body>
+
 </html>

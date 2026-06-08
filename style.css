@@ -10,7 +10,7 @@ body {
   height: 100vh;
 
   background:
-    radial-gradient(circle at top, rgba(255,255,255,0.03), transparent 40%),
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.03), transparent 40%),
     linear-gradient(180deg, #0a0a0a, #050505);
 
   overflow: hidden;
@@ -28,7 +28,7 @@ body {
   padding: 28px;
 
   background: #0b0b0b;
-  border-right: 1px solid rgba(255,255,255,0.06);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
 
   display: flex;
   flex-direction: column;
@@ -62,7 +62,7 @@ body {
   padding: 12px;
 
   background: #111;
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 
   color: #666;
   font-size: 12px;
@@ -81,14 +81,14 @@ body {
 .mode-btn.active {
   background: #1d1d1d;
   color: #fff;
-  border-color: rgba(255,255,255,0.2);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 button {
   padding: 14px;
   background: #151515;
 
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 
   color: #fff;
   font-weight: 700;
@@ -138,7 +138,7 @@ h2 {
   padding: 16px;
 
   background: #0f0f0f;
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 
   display: flex;
   flex-wrap: wrap;
@@ -204,6 +204,7 @@ h2 {
 .character-image img {
   width: 100%;
   height: 100%;
+
   object-fit: cover;
 
   display: block;
@@ -276,8 +277,11 @@ h2 {
   justify-content: center;
 
   font-size: 12px;
+  font-weight: 700;
   line-height: 1.15;
   color: #fff;
+
+  text-shadow: 0 1px 3px #000;
 
   overflow: hidden;
 }
@@ -302,15 +306,59 @@ h2 {
   display: block;
 }
 
-/* PERKS BIGGER */
+/* PERKS */
 .perk-card {
   width: 165px;
   height: 210px;
+
+  background: transparent !important;
+  border: none !important;
+
+  position: relative;
+}
+
+.perk-card .card-name {
+  height: 42px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 1px 3px #000;
+  z-index: 2;
 }
 
 .perk-card .card-image {
   width: 135px;
   height: 135px;
+
+  position: relative;
+
+  background: transparent;
+  border: none;
+}
+
+.perk-card .card-image::before {
+  content: "";
+  position: absolute;
+  inset: 13px;
+
+  background: #4b236d;
+  transform: rotate(45deg);
+
+  border: 8px solid #050505;
+  box-shadow:
+    inset 0 0 22px rgba(0, 0, 0, 0.55),
+    0 0 8px rgba(0, 0, 0, 0.8);
+
+  z-index: 0;
+}
+
+.perk-card .card-image img {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 /* ITEM */
@@ -323,6 +371,170 @@ h2 {
 .addon-card {
   width: 150px;
   height: 190px;
+
+  background: transparent !important;
+  border: none !important;
+}
+
+.addon-card .card-name {
+  height: 44px;
+
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.15;
+
+  color: #fff;
+  text-shadow: 0 1px 3px #000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.addon-card .card-image {
+  width: 128px;
+  height: 128px;
+  padding: 2px;
+
+  border: 5px solid #060606;
+  border-radius: 2px;
+
+  position: relative;
+  overflow: hidden;
+
+  box-shadow:
+    inset 0 0 25px rgba(0, 0, 0, .45),
+    0 0 0 1px rgba(255, 255, 255, .06);
+
+  transition: .2s;
+}
+
+.addon-card:hover .card-image {
+  transform: scale(1.04);
+}
+
+.addon-card .card-image::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+
+    /* большое тёмное пятно */
+    radial-gradient(circle at 75% 25%,
+      rgba(0, 0, 0, .35) 0%,
+      transparent 35%),
+
+    /* ещё одно */
+    radial-gradient(circle at 25% 80%,
+      rgba(0, 0, 0, .28) 0%,
+      transparent 40%),
+
+    /* потёртость */
+    radial-gradient(circle at 20% 20%,
+      rgba(255, 255, 255, .08) 0%,
+      transparent 18%),
+
+    /* маленькое светлое пятно */
+    radial-gradient(circle at 80% 75%,
+      rgba(255, 255, 255, .05) 0%,
+      transparent 14%);
+
+  pointer-events: none;
+  z-index: 1;
+}
+
+.addon-card .card-image::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+
+    /* виньетка */
+    radial-gradient(circle at center,
+      transparent 40%,
+      rgba(0, 0, 0, .45) 100%),
+
+    /* затемнение сверху */
+    linear-gradient(180deg,
+      rgba(255, 255, 255, .05),
+      transparent 30%,
+      rgba(0, 0, 0, .25));
+
+  pointer-events: none;
+  z-index: 2;
+}
+
+.addon-card .card-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  transform: scale(1.15);
+
+  position: relative;
+  z-index: 3;
+}
+
+/* ADDON RARITY COLORS - DIRTY BACKGROUNDS */
+.addon-card.common .card-image {
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255, 255, 255, .10), transparent 18%),
+    radial-gradient(circle at 75% 30%, rgba(0, 0, 0, .28), transparent 24%),
+    radial-gradient(circle at 35% 80%, rgba(0, 0, 0, .34), transparent 28%),
+    radial-gradient(circle at 82% 85%, rgba(255, 255, 255, .06), transparent 16%),
+    linear-gradient(180deg, #7b6652 0%, #5d4836 55%, #463425 100%);
+}
+
+.addon-card.uncommon .card-image {
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255, 255, 255, .10), transparent 18%),
+    radial-gradient(circle at 75% 30%, rgba(0, 0, 0, .28), transparent 24%),
+    radial-gradient(circle at 35% 80%, rgba(0, 0, 0, .34), transparent 28%),
+    radial-gradient(circle at 82% 85%, rgba(255, 255, 255, .06), transparent 16%),
+    linear-gradient(180deg, #2b7d4a 0%, #155b34 100%);
+}
+
+.addon-card.rare .card-image {
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255, 255, 255, .10), transparent 18%),
+    radial-gradient(circle at 75% 30%, rgba(0, 0, 0, .28), transparent 24%),
+    radial-gradient(circle at 35% 80%, rgba(0, 0, 0, .34), transparent 28%),
+    radial-gradient(circle at 82% 85%, rgba(255, 255, 255, .06), transparent 16%),
+    linear-gradient(180deg, #2c5dd4 0%, #123d9a 100%);
+}
+
+.addon-card.very-rare .card-image {
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255, 255, 255, .10), transparent 18%),
+    radial-gradient(circle at 75% 30%, rgba(0, 0, 0, .28), transparent 24%),
+    radial-gradient(circle at 35% 80%, rgba(0, 0, 0, .34), transparent 28%),
+    radial-gradient(circle at 82% 85%, rgba(255, 255, 255, .06), transparent 16%),
+    linear-gradient(180deg, #6a2fa8 0%, #43156f 100%);
+}
+
+.addon-card.ultra-rare .card-image {
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255, 255, 255, .10), transparent 18%),
+    radial-gradient(circle at 75% 30%, rgba(0, 0, 0, .28), transparent 24%),
+    radial-gradient(circle at 35% 80%, rgba(0, 0, 0, .34), transparent 28%),
+    radial-gradient(circle at 82% 85%, rgba(255, 255, 255, .06), transparent 16%),
+    linear-gradient(180deg, #b61d37 0%, #680817 100%);
+}
+
+.addon-card.event .card-image {
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255, 255, 255, .10), transparent 18%),
+    radial-gradient(circle at 75% 30%, rgba(0, 0, 0, .28), transparent 24%),
+    radial-gradient(circle at 35% 80%, rgba(0, 0, 0, .34), transparent 28%),
+    radial-gradient(circle at 82% 85%, rgba(255, 255, 255, .06), transparent 16%),
+    linear-gradient(180deg, #1d9eb7 0%, #0f5768 100%);
 }
 
 /* OFFERING */
@@ -341,7 +553,7 @@ h2 {
   justify-content: center;
 
   background: #080808;
-  border: 1px dashed rgba(255,255,255,0.15);
+  border: 1px dashed rgba(255, 255, 255, 0.15);
 
   color: #444;
   font-size: 10px;
@@ -351,54 +563,65 @@ h2 {
 /* CHALLENGE */
 .challenge-box {
   width: 100%;
+  min-height: 210px;
 
-  min-height: 80px;
+  padding: 24px 32px;
 
-  padding: 14px;
+  background: #101010;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 
-  background: #0b0b0b;
-  border: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 32px;
+}
+
+.challenge-image {
+  width: 160px;
+  height: 160px;
+  flex: 0 0 160px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.challenge-image img {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  display: block;
+}
+
+.challenge-content {
+  flex: 1;
+  min-width: 0;
 
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }
 
 .challenge-title {
-  font-size: 16px;
+  font-size: 24px;
   font-weight: 800;
-  letter-spacing: 1px;
+  color: #fff;
 }
 
 .challenge-description {
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.5;
-  color: #aaa;
+  color: #cfcfcf;
 }
 
-/* RARITY */
-.common {
-  background: #3a2f1f;
-}
-
-.uncommon {
-  background: #9b7a2f;
-}
-
-.rare {
-  background: #1f5e3b;
-}
-
-.very-rare {
-  background: #4a226d;
-}
-
-.ultra-rare {
-  background: #7a0000;
-}
-
+/* RESET OLD RARITY BACKGROUNDS */
+.common,
+.uncommon,
+.rare,
+.very-rare,
+.ultra-rare,
 .event {
-  background: #124b5c;
+  background: transparent;
 }
 
 /* MOBILE */
@@ -425,14 +648,10 @@ h2 {
     width: 100%;
   }
 
-  .character-image {
-    width: 240px;
-    height: 240px;
-  }
-
   .item-box,
   .item-addons-box {
     width: 100%;
+    padding-top: 0;
   }
 
   .build-card {
@@ -454,4 +673,424 @@ h2 {
     width: 110px;
     height: 110px;
   }
+
+  .perk-card .card-image::before {
+    inset: 11px;
+    border-width: 7px;
+  }
+
+  .addon-card {
+    width: 130px;
+    height: 175px;
+  }
+
+  .addon-card .card-image {
+    width: 108px;
+    height: 108px;
+    padding: 8px;
+    border-width: 4px;
+  }
+
+  .challenge-box {
+    min-height: 140px;
+    gap: 18px;
+    padding: 18px;
+  }
+
+  .challenge-image {
+    width: 100px;
+    height: 100px;
+    flex-basis: 100px;
+  }
+
+  .challenge-image img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .challenge-title {
+    font-size: 18px;
+  }
+
+  .challenge-description {
+    font-size: 13px;
+  }
+}
+/* ITEM RARITY COLORS */
+.item-card {
+  background: transparent !important;
+  border: none !important;
+}
+
+.item-card .card-image {
+  width: 128px;
+  height: 128px;
+
+  padding: 4px;
+
+  border: 5px solid #060606;
+  border-radius: 2px;
+
+  position: relative;
+  overflow: hidden;
+
+  box-shadow:
+    inset 0 0 25px rgba(0, 0, 0, .45),
+    0 0 0 1px rgba(255, 255, 255, .06);
+}
+
+.item-card .card-image::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(circle at 75% 25%, rgba(0, 0, 0, .35) 0%, transparent 35%),
+    radial-gradient(circle at 25% 80%, rgba(0, 0, 0, .28) 0%, transparent 40%),
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, .08) 0%, transparent 18%),
+    radial-gradient(circle at 80% 75%, rgba(255, 255, 255, .05) 0%, transparent 14%);
+
+  pointer-events: none;
+  z-index: 1;
+}
+
+.item-card .card-image::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(circle at center, transparent 40%, rgba(0, 0, 0, .45) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, .05), transparent 30%, rgba(0, 0, 0, .25));
+
+  pointer-events: none;
+  z-index: 2;
+}
+
+.item-card .card-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  transform: scale(1.15);
+
+  position: relative;
+  z-index: 3;
+}
+
+.item-card.common .card-image {
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255, 255, 255, .10), transparent 18%),
+    radial-gradient(circle at 75% 30%, rgba(0, 0, 0, .28), transparent 24%),
+    radial-gradient(circle at 35% 80%, rgba(0, 0, 0, .34), transparent 28%),
+    radial-gradient(circle at 82% 85%, rgba(255, 255, 255, .06), transparent 16%),
+    linear-gradient(180deg, #7b6652 0%, #5d4836 55%, #463425 100%);
+}
+
+.item-card.uncommon .card-image {
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255, 255, 255, .10), transparent 18%),
+    radial-gradient(circle at 75% 30%, rgba(0, 0, 0, .28), transparent 24%),
+    radial-gradient(circle at 35% 80%, rgba(0, 0, 0, .34), transparent 28%),
+    radial-gradient(circle at 82% 85%, rgba(255, 255, 255, .06), transparent 16%),
+    linear-gradient(180deg, #2b7d4a 0%, #155b34 100%);
+}
+
+.item-card.rare .card-image {
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255, 255, 255, .10), transparent 18%),
+    radial-gradient(circle at 75% 30%, rgba(0, 0, 0, .28), transparent 24%),
+    radial-gradient(circle at 35% 80%, rgba(0, 0, 0, .34), transparent 28%),
+    radial-gradient(circle at 82% 85%, rgba(255, 255, 255, .06), transparent 16%),
+    linear-gradient(180deg, #2c5dd4 0%, #123d9a 100%);
+}
+
+.item-card.very-rare .card-image {
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255, 255, 255, .10), transparent 18%),
+    radial-gradient(circle at 75% 30%, rgba(0, 0, 0, .28), transparent 24%),
+    radial-gradient(circle at 35% 80%, rgba(0, 0, 0, .34), transparent 28%),
+    radial-gradient(circle at 82% 85%, rgba(255, 255, 255, .06), transparent 16%),
+    linear-gradient(180deg, #6a2fa8 0%, #43156f 100%);
+}
+
+.item-card.ultra-rare .card-image {
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255, 255, 255, .10), transparent 18%),
+    radial-gradient(circle at 75% 30%, rgba(0, 0, 0, .28), transparent 24%),
+    radial-gradient(circle at 35% 80%, rgba(0, 0, 0, .34), transparent 28%),
+    radial-gradient(circle at 82% 85%, rgba(255, 255, 255, .06), transparent 16%),
+    linear-gradient(180deg, #b61d37 0%, #680817 100%);
+}
+
+.item-card.event .card-image {
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255, 255, 255, .10), transparent 18%),
+    radial-gradient(circle at 75% 30%, rgba(0, 0, 0, .28), transparent 24%),
+    radial-gradient(circle at 35% 80%, rgba(0, 0, 0, .34), transparent 28%),
+    radial-gradient(circle at 82% 85%, rgba(255, 255, 255, .06), transparent 16%),
+    linear-gradient(180deg, #1d9eb7 0%, #0f5768 100%);
+}
+/* ========================================= */
+/* OFFERING RARITY COLORS */
+/* ========================================= */
+
+.offering-card {
+  width: 150px;
+  height: 190px;
+
+  background: transparent !important;
+  border: none !important;
+}
+
+.offering-card .card-name {
+  height: 44px;
+
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.15;
+
+  color: #fff;
+  text-shadow: 0 1px 3px #000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.offering-card .card-image {
+  width: 138px;
+  height: 138px;
+
+  position: relative;
+  overflow: visible;
+
+  background: transparent;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: .2s;
+}
+
+.offering-card:hover .card-image {
+  transform: scale(1.05);
+}
+
+/* OUTER BLACK HEX */
+.offering-card .card-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: #020202;
+
+  clip-path: polygon(
+    25% 6%,
+    75% 6%,
+    100% 50%,
+    75% 94%,
+    25% 94%,
+    0% 50%
+  );
+
+  box-shadow: 0 0 12px rgba(0,0,0,.8);
+
+  z-index: 1;
+}
+
+/* INNER COLORED HEX */
+.offering-card .card-image::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+
+  clip-path: polygon(
+    25% 6%,
+    75% 6%,
+    100% 50%,
+    75% 94%,
+    25% 94%,
+    0% 50%
+  );
+
+  z-index: 2;
+}
+
+.offering-card .card-image img {
+  width: 104px;
+  height: 104px;
+
+  object-fit: contain;
+
+  position: relative;
+  z-index: 4;
+
+  transform: scale(1.18);
+
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,.6));
+}
+
+/* COMMON */
+.offering-card.common .card-image::after {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,.12), transparent 20%),
+    radial-gradient(circle at 75% 75%, rgba(0,0,0,.35), transparent 35%),
+    linear-gradient(180deg, #7b6652 0%, #5d4836 55%, #463425 100%);
+}
+
+/* UNCOMMON */
+.offering-card.uncommon .card-image::after {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,.12), transparent 20%),
+    radial-gradient(circle at 75% 75%, rgba(0,0,0,.35), transparent 35%),
+    linear-gradient(180deg, #2b7d4a 0%, #155b34 100%);
+}
+
+/* RARE */
+.offering-card.rare .card-image::after {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,.12), transparent 20%),
+    radial-gradient(circle at 75% 75%, rgba(0,0,0,.35), transparent 35%),
+    linear-gradient(180deg, #2c5dd4 0%, #123d9a 100%);
+}
+
+/* VERY RARE */
+.offering-card.very-rare .card-image::after {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,.12), transparent 20%),
+    radial-gradient(circle at 75% 75%, rgba(0,0,0,.35), transparent 35%),
+    linear-gradient(180deg, #6a2fa8 0%, #43156f 100%);
+}
+
+/* ULTRA RARE */
+.offering-card.ultra-rare .card-image::after {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,.12), transparent 20%),
+    radial-gradient(circle at 75% 75%, rgba(0,0,0,.35), transparent 35%),
+    linear-gradient(180deg, #b61d37 0%, #680817 100%);
+}
+
+/* EVENT */
+.offering-card.event .card-image::after {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,.12), transparent 20%),
+    radial-gradient(circle at 75% 75%, rgba(0,0,0,.35), transparent 35%),
+    linear-gradient(180deg, #1d9eb7 0%, #0f5768 100%);
+}
+
+.version-box {
+  margin-top: 20px;
+
+  padding: 14px;
+
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.version-text {
+  margin-bottom: 10px;
+
+  color: #b36cff;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 4px;
+}
+
+.version-text::before {
+  content: "VERSION ";
+  color: #666;
+}
+
+.patch-btn {
+  width: 100%;
+  padding: 10px;
+
+  background: #111;
+  border: 1px solid rgba(255,255,255,0.12);
+
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+
+  cursor: pointer;
+}
+
+.patch-btn:hover {
+  background: #1a1a1a;
+  border-color: rgba(255,255,255,0.3);
+}
+
+.patch-modal {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0,0,0,0.85);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 9999;
+}
+
+.patch-modal.hidden {
+  display: none;
+}
+
+.patch-content {
+  width: 560px;
+  max-width: 90vw;
+
+  padding: 28px;
+
+  background: #0b0b0b;
+  border: 1px solid rgba(255,255,255,0.12);
+
+  color: #fff;
+}
+
+.patch-content h2 {
+  margin-bottom: 18px;
+}
+
+.patch-content h3 {
+  margin-top: 18px;
+  margin-bottom: 8px;
+
+  color: #b36cff;
+  font-size: 13px;
+  letter-spacing: 3px;
+}
+
+.patch-content ul {
+  padding-left: 20px;
+}
+
+.patch-content li {
+  margin-bottom: 6px;
+  color: #cfcfcf;
+}
+
+.close-btn {
+  width: 100%;
+  margin-top: 22px;
+  padding: 12px;
+
+  background: #111;
+  border: 1px solid rgba(255,255,255,0.12);
+
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: 2px;
+
+  cursor: pointer;
 }

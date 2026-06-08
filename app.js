@@ -1,24 +1,17 @@
 import { survivors } from "./data/survivors.js";
 import { killers } from "./data/killers.js";
 
-import {
-  survivorPerks,
-  killerPerks
-} from "./data/perks.js";
+import { survivorPerks, killerPerks } from "./data/perks.js";
 
 import { items } from "./data/items.js";
 
-import {
-  survivorChallenges,
-  killerChallenges
-} from "./data/challenges.js";
+import { survivorChallenges, killerChallenges } from "./data/challenges.js";
 
 import { killerAddons } from "./data/killerAddons.js";
 
-import {
-  survivorOfferings,
-  killerOfferings
-} from "./data/offerings.js";
+import { survivorOfferings, killerOfferings } from "./data/offerings.js";
+
+import { changelog } from "./data/changelog.js";
 
 const button = document.getElementById("generateBtn");
 const result = document.getElementById("result");
@@ -26,9 +19,9 @@ const modeButtons = document.querySelectorAll(".mode-btn");
 
 let currentMode = "survivor";
 
-modeButtons.forEach(btn => {
+modeButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
-    modeButtons.forEach(b => b.classList.remove("active"));
+    modeButtons.forEach((b) => b.classList.remove("active"));
     btn.classList.add("active");
     currentMode = btn.dataset.mode;
   });
@@ -67,6 +60,23 @@ function renderCard(item, className = "") {
       <div class="card-image">
         ${renderImage(item.image, item.name)}
       </div>
+    </div>
+  `;
+}
+
+function renderChallenge(challenge) {
+  return `
+    <div class="challenge-box">
+
+      <div class="challenge-image">
+        ${renderImage(challenge.image, challenge.title)}
+      </div>
+
+      <div class="challenge-content">
+        <div class="challenge-title">${challenge.title}</div>
+        <div class="challenge-description">${challenge.description}</div>
+      </div>
+
     </div>
   `;
 }
@@ -117,7 +127,7 @@ function generateSurvivorBuild() {
         <div class="section-title">PERKS</div>
 
         <div class="cards-row perks-row">
-          ${perks.map(p => renderCard(p, "perk-card")).join("")}
+          ${perks.map((p) => renderCard(p, "perk-card")).join("")}
         </div>
       </section>
 
@@ -132,10 +142,7 @@ function generateSurvivorBuild() {
       <section class="build-row">
         <div class="section-title">CHALLENGE</div>
 
-        <div class="challenge-box">
-          <div class="challenge-title">${challenge.title}</div>
-          <div class="challenge-description">${challenge.description}</div>
-        </div>
+        ${renderChallenge(challenge)}
       </section>
 
     </div>
@@ -191,7 +198,7 @@ function generateKillerBuild() {
         <div class="section-title">PERKS</div>
 
         <div class="cards-row perks-row">
-          ${perks.map(p => renderCard(p, "perk-card")).join("")}
+          ${perks.map((p) => renderCard(p, "perk-card")).join("")}
         </div>
       </section>
 
@@ -206,10 +213,7 @@ function generateKillerBuild() {
       <section class="build-row">
         <div class="section-title">CHALLENGE</div>
 
-        <div class="challenge-box">
-          <div class="challenge-title">${challenge.title}</div>
-          <div class="challenge-description">${challenge.description}</div>
-        </div>
+        ${renderChallenge(challenge)}
       </section>
 
     </div>
@@ -219,4 +223,44 @@ function generateKillerBuild() {
 button.addEventListener("click", () => {
   if (currentMode === "survivor") generateSurvivorBuild();
   else generateKillerBuild();
+});
+
+const patchBtn = document.getElementById("patchNotesBtn");
+const patchModal = document.getElementById("patchNotesModal");
+const closePatchBtn = document.getElementById("closePatchNotes");
+const patchList = document.getElementById("patchList");
+
+function renderChangelog() {
+  patchList.innerHTML = changelog.map(update => `
+    <div class="patch-version">
+      <div class="patch-version-header">
+        <span>${update.version}</span>
+        <strong>${update.title}</strong>
+      </div>
+
+      ${update.sections.map(section => `
+        <div class="patch-section">
+          <h3>${section.title}</h3>
+          <ul>
+            ${section.items.map(item => `<li>${item}</li>`).join("")}
+          </ul>
+        </div>
+      `).join("")}
+    </div>
+  `).join("");
+}
+
+patchBtn?.addEventListener("click", () => {
+  renderChangelog();
+  patchModal.classList.remove("hidden");
+});
+
+closePatchBtn?.addEventListener("click", () => {
+  patchModal.classList.add("hidden");
+});
+
+patchModal?.addEventListener("click", (event) => {
+  if (event.target === patchModal) {
+    patchModal.classList.add("hidden");
+  }
 });
