@@ -638,7 +638,7 @@ export const survivorPerks = [
   },
   {
     name: "Дежавю",
-    image: "assets/perks/survivor/01webpdejaVu.webp"
+    image: "assets/perks/survivor/01dejaVu.webp"
   },
   {
     name: "Мы справимся",

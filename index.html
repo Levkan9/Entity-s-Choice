@@ -53,6 +53,8 @@
         </button>
       </div>
 
+      <div class="sidebar-history" id="sidebarHistory"></div>
+
     </div>
 
     <div class="content">
@@ -65,19 +67,25 @@
 
   </div>
 
-<div id="patchNotesModal" class="patch-modal hidden">
-  <div class="patch-content">
+  <div id="patchNotesModal" class="patch-modal hidden">
+    <div class="patch-content patch-content-wide">
 
-    <h2>История обновлений</h2>
+      <div class="patch-top">
+        <h2>История обновлений</h2>
 
-    <div id="patchList"></div>
+        <button id="closePatchNotes" class="patch-close-x" type="button">
+          ✕
+        </button>
+      </div>
 
-    <button id="closePatchNotes" class="close-btn" type="button">
-      ЗАКРЫТЬ
-    </button>
+      <div class="patch-layout">
+        <div id="patchList" class="patch-list"></div>
 
+        <div id="patchDetails" class="patch-details"></div>
+      </div>
+
+    </div>
   </div>
-</div>
 
   <script type="module" src="app.js"></script>
 
