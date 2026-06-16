@@ -31,9 +31,8 @@ modeButtons.forEach((btn) => {
     btn.classList.add("active");
 
     currentMode = btn.dataset.mode;
-    currentBuild = null;
 
-    result.innerHTML = `<div class="placeholder">GENERATE NEW BUILD</div>`;
+    renderBuildHistory();
   });
 });
 
@@ -144,7 +143,15 @@ function renderBuild() {
             </div>
 
             <div class="character-image">
-              <img src="${currentBuild.character.image}" alt="${currentBuild.character.name}">
+              <img
+                src="${currentBuild.character.image}"
+                alt="${currentBuild.character.name}"
+                style="
+                  --character-scale:${currentBuild.character.scale || 1};
+                  --character-x:${currentBuild.character.x || 0}px;
+                  --character-y:${currentBuild.character.y || 0}px;
+           "
+           >
             </div>
           </div>
 
@@ -203,7 +210,15 @@ function renderBuild() {
             </div>
 
             <div class="character-image">
-              <img src="${currentBuild.character.image}" alt="${currentBuild.character.name}">
+              <img
+                src="${currentBuild.character.image}"
+                alt="${currentBuild.character.name}"
+                style="
+                  --character-scale:${currentBuild.character.scale || 1};
+                  --character-x:${currentBuild.character.x || 0}px;
+                  --character-y:${currentBuild.character.y || 0}px;
+                "
+                >
             </div>
           </div>
 

@@ -679,7 +679,7 @@ export const survivorPerks = [
   {
     name: "Скользкое мясо",
     image: "assets/perks/survivor/01slipperyMeat.webp"
-  },
+  }
 ];
 
 export const killerPerks = [
@@ -1311,6 +1311,21 @@ export const killerPerks = [
   {
     name: "Порча: разум улья",
     image: "assets/perks/killer/HexHiveMind.webp",
+    rarity: "very-rare",
+  },
+  {
+    name: "Порча: Смертельный испуг",
+    image: "assets/perks/killer/ScaredToDeath.webp",
     rarity: "very-rare"
-  }
+  },
+  {
+    name: "Неистовство",
+    image: "assets/perks/killer/Rampage.webp",
+    rarity: "very-rare"
+  },
+  {
+    name: "Безмолвная Тень",
+    image: "assets/perks/killer/SilentShadow.webp",
+    rarity: "very-rare"
+  },
 ];

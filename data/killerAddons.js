@@ -965,5 +965,29 @@ export const killerAddons = {
     { name: "Бисерный лабиринт", image: "assets/addons/killer/42BeadMaze.webp", rarity: "common" },
     { name: "Винтажный радиоприемник", image: "assets/addons/killer/42MidCenturyRadio.webp", rarity: "common" },
     { name: "Витражная роспись", image: "assets/addons/killer/42StainedGlassMural.webp", rarity: "common" }
+  ],
+
+    "Слэшер": [
+    { name: "Радужный лодочный двигатель", image: "assets/addons/killer/43IridescentBoatMotor.webp", rarity: "ultra-rare"},
+    { name: "Грязные деньги", image: "assets/addons/killer/43DirtyMoney.webp", rarity: "ultra-rare"},
+    { name: "Пропавший штопор", image: "assets/addons/killer/43MissingCorkscrew.webp", rarity: "very-rare"},
+    { name: "Жетон помощника шерифа", image: "assets/addons/killer/43DeputysBadge.webp", rarity: "very-rare"},
+    { name: "Сгоревший предохранитель", image: "assets/addons/killer/43BurntFuse.webp", rarity: "very-rare"},
+    { name: "Кровавый журнал", image: "assets/addons/killer/43BloodyMagazine.webp", rarity: "very-rare"},
+    { name: "Два гвоздя", image: "assets/addons/killer/43TwoNails.webp", rarity: "rare"},
+    { name: "Камень для сауны", image: "assets/addons/killer/43SaunaRock.webp", rarity: "rare"},
+    { name: "Осколки зеркала", image: "assets/addons/killer/43MirrorShards.webp", rarity: "rare"},
+    { name: "Рельефный алюминий", image: "assets/addons/killer/43ImprintedAluminum.webp", rarity: "rare"},
+    { name: "Глазная слизь", image: "assets/addons/killer/43EyeGoop.webp", rarity: "rare"},
+    { name: "Токсичные отходы", image: "assets/addons/killer/43ToxicWaste.webp", rarity: "uncommon"},
+    { name: "Спальный Мешок", image: "assets/addons/killer/43SleepingBag.webp", rarity: "uncommon"},
+    { name: "Праздничная шумелка", image: "assets/addons/killer/43PartyNoisemaker.webp", rarity: "uncommon"},
+    { name: "Кофе коронера", image: "assets/addons/killer/43CoronersCoffee.webp", rarity: "uncommon"},
+    { name: "Кровавая улыбка", image: "assets/addons/killer/43BloodySmile.webp", rarity: "uncommon"},
+    { name: "Туфля санитарки", image: "assets/addons/killer/43OrderlysShoe.webp", rarity: "common"},
+    { name: "Вязальная спица", image: "assets/addons/killer/43KnittingNeedle.webp", rarity: "common"},
+    { name: "Ручной культиватор", image: "assets/addons/killer/43GardenClaw.webp", rarity: "common"},
+    { name: "Погнутое колесо", image: "assets/addons/killer/43BentWheel.webp", rarity: "common"}
   ]
+
 };

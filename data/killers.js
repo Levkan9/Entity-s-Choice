@@ -121,7 +121,7 @@ export const killers = [
   },
   {
     name: "Торговка черепами",
-    image: "assets/killers/K31_TheSkullMerchant_Portrait.webp"
+    image: "assets/killers/K31_TheSkullMerchant_Portrait.webp",
   },
   {
     name: "Сингулярность",
@@ -129,7 +129,7 @@ export const killers = [
   },
   {
     name: "Ксеноморф",
-    image: "assets/killers/K33_TheXenomorph_Portrait.webp"
+    image: "assets/killers/K33_TheXenomorph_Portrait.webp",
   },
   {
     name: "Хороший Парень",
@@ -166,5 +166,9 @@ export const killers = [
   {
     name: "Первый",
     image: "assets/killers/K42_TheFirst_Portrait.webp"
+  },
+  {
+    name: "Слэшер",
+    image: "assets/killers/K43_TheSlasher.webp"
   }
 ];
