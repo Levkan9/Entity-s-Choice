@@ -1328,4 +1328,19 @@ export const killerPerks = [
     image: "assets/perks/killer/SilentShadow.webp",
     rarity: "very-rare"
   },
+  {
+    name: "Полный газ",
+    image: "assets/perks/killer/53WideOpenThrottle.webp",
+    rarity: "very-rare"
+  },
+  {
+    name: "Протяни руку помощи",
+    image: "assets/perks/killer/53LendaHand.webp",
+    rarity: "very-rare"
+  },
+  {
+    name: "Перекрёстный допрос",
+    image: "assets/perks/killer/53CrossExamination.webp",
+    rarity: "very-rare"
+  }
 ];

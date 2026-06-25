@@ -205,6 +205,10 @@ export const survivors = [
   },
   {
     name: "Квон Тхэён",
-    image: "assets/survivors/Vee_Boonyasak.webp"
+    image: "assets/survivors/Kwon_Tae_Young.webp"
+  },
+  {
+    name: "Шейн Виигваас",
+    image: "assets/survivors/ShaneWiigwaas.webp"
   }
 ];
